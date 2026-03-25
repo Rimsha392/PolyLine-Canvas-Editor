@@ -1,36 +1,47 @@
 # 🎨 PolyLine Editor
 **Phase 1: Requirements & Initialization** | Submitted by: Rimsha Hussain (Student A)
 
+---
+
 ### 🔗 Project Links
-* **Live Demo:** [PASTE_YOUR_VERCEL_LINK_HERE]
-* **Repository:** https://github.com/Rimsha392/PolyLine-Canvas-Editor
+* **Live Demo:** [https://poly-line-canvas-editor-omega.vercel.app](https://poly-line-canvas-editor-omega.vercel.app)
+* **Repository:** [https://github.com/Rimsha392/PolyLine-Canvas-Editor](https://github.com/Rimsha392/PolyLine-Canvas-Editor)
 
 ---
 
-## 📌 Project Vision (Requirements)
+### 📌 Project Vision (Requirements)
 The goal is a responsive, web-based tool for manipulating geometric polylines using high-precision mouse input and efficient keyboard accelerators.
 
-### 1.1 Functional Requirements (The "Verbs")
+#### 1.1 Functional Requirements (The "Verbs")
 * **Creation:** Start new polylines (**B**) and add vertices via discrete clicks.
 * **Manipulation:** Move existing vertices (**M**) and insert new ones onto edges (**I**).
 * **Deletion:** Remove the nearest vertex (**D**) and "heal" the path via topological reconnection.
 * **System Controls:** Clear canvas (**R**), Exit (**Q**), and Save/Load (**Ctrl+S / Ctrl+O**).
 
-### 1.2 Constraints
+#### 1.2 Constraints
 * **Performance:** Must maintain **60 FPS** (under 16ms latency).
 * **Capacity:** Support up to **100 polylines**.
 * **UI:** Minimalist interface to prioritize the canvas workspace.
 
 ---
 
-## 🚀 Getting Started
+### 💻 Tech Stack
+* **Framework:** Next.js 14+ (App Router)
+* **Language:** TypeScript (Strict Type Safety)
+* **State Management:** Zustand (Low-latency state updates)
+* **Rendering:** HTML5 Canvas API (Direct pixel manipulation)
+* **Styling:** Tailwind CSS
+
+---
+
+### 🚀 Getting Started
 1. `npm install`
 2. `npm run dev`
 3. Open [http://localhost:3000](http://localhost:3000)
 
 ---
 
-## 🛠️ Features & Shortcuts
+### 🛠️ Features & Shortcuts
 
 | Tool | Key | Description |
 | :--- | :--- | :--- |
@@ -42,14 +53,14 @@ The goal is a responsive, web-based tool for manipulating geometric polylines us
 | **Undo/Redo**| **Ctrl+Z/Y** | Full editing history. |
 | **Export** | **E** | Download as **SVG** or **PNG**. |
 
-### Navigation
+#### Navigation
 * **Scroll:** Zoom (centered on cursor).
 * **Space + Drag:** Pan canvas.
 * **Ctrl + 0:** Reset view.
 
 ---
 
-## 📂 Data Format (JSON v2)
+### 📂 Data Format (JSON v2)
 ```json
 {
   "version": 2,
