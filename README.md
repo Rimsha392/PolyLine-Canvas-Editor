@@ -1,36 +1,65 @@
-# 🎨 PolyLine Canvas Editor — Phase 1: Requirements Analysis
-**Academic Submission:** Rimsha Hussain (Student A)  
-**Focus:** Project Initialization & Interface Requirements
+# 🎨 PolyLine Editor
+**Phase 1: Requirements & Initialization** | Submitted by: Rimsha Hussain (Student A)
+
+### 🔗 Project Links
+* **Live Demo:** [PASTE_YOUR_VERCEL_LINK_HERE]
+* **Repository:** https://github.com/Rimsha392/PolyLine-Canvas-Editor
 
 ---
 
-## 📌 Project Vision & Interaction Design
-The primary objective is the architecting of a high-fidelity, responsive, web-based environment for the **manipulation of geometric primitives**. The design prioritizes **modal interaction**, balancing high-precision pointing (Direct Manipulation) with an efficient **Keyboard-Accelerator** system to reduce cognitive load and enhance user throughput.
+## 📌 Project Vision (Requirements)
+The goal is a responsive, web-based tool for manipulating geometric polylines using high-precision mouse input and efficient keyboard accelerators.
+
+### 1.1 Functional Requirements (The "Verbs")
+* **Creation:** Start new polylines (**B**) and add vertices via discrete clicks.
+* **Manipulation:** Move existing vertices (**M**) and insert new ones onto edges (**I**).
+* **Deletion:** Remove the nearest vertex (**D**) and "heal" the path via topological reconnection.
+* **System Controls:** Clear canvas (**R**), Exit (**Q**), and Save/Load (**Ctrl+S / Ctrl+O**).
+
+### 1.2 Constraints
+* **Performance:** Must maintain **60 FPS** (under 16ms latency).
+* **Capacity:** Support up to **100 polylines**.
+* **UI:** Minimalist interface to prioritize the canvas workspace.
 
 ---
 
-## 📋 1.1 Functional Requirements (Interaction Taxonomy)
-As the lead for Phase 1, I have established a robust **Affordance Model** consisting of eight core system interactions:
-
-* **Creation (Modal Entry):** Initialization of new polyline entities via key-trigger (**B**) with asynchronous vertex instantiation via discrete input events.
-* **Manipulation (Direct Control):** Support for vertex translation (**M**) and edge-splitting/interpolation (**I**) to modify existing geometry.
-* **Deletion (Geometric Pruning):** Heuristic-based removal of the vertex nearest to the cursor (**D**), followed by an automated **Topological Re-connection** to maintain path continuity.
-* **Systemic Controls:** * **State Reset:** Canvas clearing via the (**R**) hotkey.
-    * **Termination:** Application exit via (**Q**).
-    * **Data Persistence:** State serialization/deserialization (JSON) via standard **Command-Key Accords** (**Ctrl+S / Ctrl+O**).
+## 🚀 Getting Started
+1. `npm install`
+2. `npm run dev`
+3. Open [http://localhost:3000](http://localhost:3000)
 
 ---
 
-## ⚙️ 1.2 System Constraints & Performance Metrics
-To ensure an optimal **User Experience (UX)**, the system is bound by the following technical heuristics:
+## 🛠️ Features & Shortcuts
 
-* **Computational Capacity:** The rendering engine must manage a complexity of up to **100 discrete polyline entities** without degradation.
-* **Latency Thresholds:** Performance must sustain a **60 FPS** refresh rate, ensuring a **frame budget of $\le 16.67ms$** to prevent "interaction lag" and maintain visual fluidity.
-* **UI Philosophy:** A minimalist, **Non-Intrusive Interface** to maximize the user's "Display-to-Action" ratio within the canvas workspace.
+| Tool | Key | Description |
+| :--- | :--- | :--- |
+| **Draw** | **B** | Click to add points. Double-click/Esc to finish. |
+| **Close** | **C** | Connect last vertex to first (Requires 3+ points). |
+| **Move** | **M** | Drag vertices to reposition in real-time. |
+| **Delete** | **D** | Click nearest vertex to remove it. |
+| **Insert** | **I** | Click near an edge to split it. |
+| **Undo/Redo**| **Ctrl+Z/Y** | Full editing history. |
+| **Export** | **E** | Download as **SVG** or **PNG**. |
+
+### Navigation
+* **Scroll:** Zoom (centered on cursor).
+* **Space + Drag:** Pan canvas.
+* **Ctrl + 0:** Reset view.
 
 ---
 
-## 🚩 Challenges and Confusions (HCI Reflection)
-* **Version Control Sync (Git):** Encountered a **State Synchronization Conflict** between the local working tree and remote origin. This was mitigated by re-initializing the `.git` architecture to establish a clean individual submission lineage.
-* **Vertex "Healing" Heuristics:** A significant design challenge involved calculating the **Euclidean Distance** for vertex selection and ensuring the path re-closed correctly without violating geometric logic during deletions.
-* **Input Polling & Refresh Rates:** Analyzing the trade-off between high-frequency mouse polling and the Canvas API's drawing loop to prevent "jank" during the **Insert (I)** preview phase.
+## 📂 Data Format (JSON v2)
+```json
+{
+  "version": 2,
+  "polylines": [
+    {
+      "id": "a1b2c3",
+      "points": [{ "x": 100, "y": 200 }],
+      "closed": false,
+      "color": "#1E293B",
+      "lineWidth": 2
+    }
+  ]
+}
